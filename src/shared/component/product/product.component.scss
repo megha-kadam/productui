@@ -1,0 +1,18 @@
+
+.productCard{
+    .mobileImg{
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .unAvailable{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50% -50%);
+    }
+
+    &.notAvailable .card-body{
+        filter: blur(2px) grayscale(1);
+    }
+}

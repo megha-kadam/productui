@@ -1,0 +1,63 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card productCard mb-3" 
+            *ngFor="let card of productArr"
+            [ngClass]="{
+                notAvailable : !card.isAvailable
+            }">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- <img class="mobileImg" *ngIf="card.image; else noImage" [src]="card.image" [alt]="card.name" 
+                            [title]="card.name">
+                            
+                           <ng-template #noImage>
+                            <img class="mobileImg" src="https://placehold.co/600x400/EEE/31343C" 
+                             [alt]="card.name" [title]="card.name">
+                           </ng-template> -->
+
+                           <img class="mobileImg" [src]="card.image ? card.image : 'https://placehold.co/600x400/EEE/31343C'"
+                            [alt]="card.name" [title]="card.name">
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="specification">
+                                <h3 class="d-flex justify-content-between">
+                                    {{card.name}}
+                                    <small class="text-white rating"
+                                     [ngClass]="{
+                                        'badge badge-success' : card.rating >= 4,
+                                        'badge badge-warning' : card.rating > 4 && card.rating  <= 3,
+                                        'badge badge-danger' : card.rating < 3
+                                    }">{{card.rating}}</small>
+                                </h3>
+
+                                <ul class="list-group">
+                                    <li class="list-group-item" *ngFor="let features of card.features">
+                                        {{features}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                         <h5>
+                            <small>{{card.price  | currency : "INR"}}</small> <br>
+                            <del><small>{{card.price + (card.price * .20) | currency : "INR"}}</small></del>
+                            <small> 20% offer</small>
+                         </h5>
+                            <br>
+                            <span class="text-danger"
+                            *ngIf="card.noOfItems < 10"
+                            >only {{card.noOfItems}} left</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-danger unAvailable font-weight-700"
+                *ngIf="!card.isAvailable">
+                    Currently Unavailable !!!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
