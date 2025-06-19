@@ -1,0 +1,47 @@
+.movieCard{
+    height: 400px;
+    overflow: hidden;
+    margin: 0;
+    cursor: pointer;
+   img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+   figcaption .titleRating{
+        background-color: #22254b;
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .titleRating h3{
+        margin: 0;
+        height: 40px;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .overview{
+        position: absolute;
+        bottom: 0;
+        background-color: #fff;
+        padding: 20px;
+        overflow-y: auto;
+        text-align: justify;
+        transform: translateY(110%);
+        // transform: scale(0);
+        opacity: 0;
+        transition: all 0.5s ease-in;
+    }
+
+    &.movieCard:hover .overview{
+         transform: translateY(0);
+        // transform: scale(1);
+        opacity: 1;
+    }
+}

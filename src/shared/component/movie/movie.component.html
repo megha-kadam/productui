@@ -1,0 +1,37 @@
+<div class="container-fluid mt-5">
+    <h1 class="text-center">{{movie}}</h1>
+    <div class="row">
+        <div class="col-md-4 mb-3" *ngFor="let movie of movieArr">
+            <div class="card">
+                <figure class="movieCard">
+                    <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path || movie.poster_path}}" 
+                    alt="{{movie.title || movie.original_title}}" title="{{movie.title || movie.original_title}}">
+                <figcaption>
+                    <div class="titleRating">
+                       <div class="row">
+                        <div class="col-10">
+                             <h3>{{movie.title || movie.original_title}}</h3>
+                        </div> 
+                        <div class="col-2">
+                            <h4>
+                                <strong class="text-white"
+                                [ngClass]="{
+                                'badge-success' : movie.vote_average > 7,
+                                'badge-warning' : movie.vote_average > 5 && movie.vote_average <= 7,
+                                'badge badge-danger' : movie.vote_average < 5
+                                }">{{movie.vote_average}}</strong>
+                            </h4>
+                        </div>
+                       </div>
+                    </div>
+
+                    <div class="overview">
+                        <h3>{{movie.title || movie.original_title}}</h3>
+                        <p>{{movie.overview}}</p>
+                    </div>
+                </figcaption>
+             </figure>
+            </div>
+        </div>
+    </div>
+</div>
